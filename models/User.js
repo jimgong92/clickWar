@@ -4,11 +4,7 @@ var mongoose = require('mongoose'),
 var UserSchema = new Schema({
     id: Number,
     username: String,
-    password: String,
-    networks: [{
-      type: Schema.Types.ObjectId, 
-      ref: 'Network'
-    }]
+    password: String
 });
 
 module.exports = mongoose.model('User', UserSchema);
