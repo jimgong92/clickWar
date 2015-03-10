@@ -2,11 +2,20 @@
  * MODULE DEPENDENCIES
  */
 var express = require('express');
+var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var session = require('express-session');
 var mongoose = require('mongoose');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 
+
+
+/**
+ * Create Express Server
+ */
+
+var app = express(); 
 /**
  * MongoDB connection
  */
@@ -19,16 +28,17 @@ mongoose.connection.on("error", function(err) {
 /**
  * Middleware
  */
-app.use(express.cookieParser());
-app.use(express.bodyParser());
-app.use(express.session({secret: "SECRET"}));
+app.use(cookieParser())
+app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.json());
+app.use(session({
+  secret: "SECRET",
+  resave: false,
+  saveUninitialized: false
+}));
 app.use(passport.initialize());
 app.use(passport.session());
 
-/**
- * Create Express Server
- */
-var app = express(); 
 
 passport.use(new LocalStrategy(function(username, password, done){
   Users.findOne({ username: username}, function(err, user){
