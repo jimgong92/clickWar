@@ -9,13 +9,11 @@ var mongoose = require('mongoose');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 
-
-
 /**
  * Create Express Server
  */
-
 var app = express(); 
+
 /**
  * MongoDB connection
  */
@@ -39,7 +37,9 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-
+/**
+ * Passport Configuration
+ */
 passport.use(new LocalStrategy(function(username, password, done){
   Users.findOne({ username: username}, function(err, user){
     if(err) { return done(err); }
