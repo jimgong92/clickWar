@@ -1,7 +1,8 @@
-var HelloWorld = React.createClass({
-    render: function() {
-        return <div>Hello World</div>;
-    }
+var Dunk = React.createClass({
+  
+  render: function(){
+    return <button>DUNK</button>;
+  }
 });
  
-React.render(<HelloWorld />, document.getElementById('app'));
+React.render(<Dunk/>, document.getElementById('app'));
