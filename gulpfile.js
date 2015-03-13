@@ -2,7 +2,6 @@
  * Gulp
  */
 var gulp = require('gulp');
-var child_process = require('child_process');
 var pkg = require('./package.json');
 
 /**
@@ -19,7 +18,7 @@ var type = production ? 'production' : 'development';
 gutil.log('Building for ' + type);
 
 
-gulp.task('default', ['serve']);
+gulp.task('default', ['startDB', 'serve']);
 
 gulp.task('lint', function(){
   return gulp
@@ -34,8 +33,8 @@ gulp.task('serve', function(){
   });
 });
 
-// gulp.task('startDB', function(){
-//   child_process.exec('start mongod --dbpath ./d', function(err,stdout,stderr){
-//     console.log(stdout);
-//   });
-// });
+gulp.task('startDB', function(){
+  return gulp
+    .src('')
+    .pipe(plugins.shell(['mongod']));
+});
