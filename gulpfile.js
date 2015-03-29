@@ -17,9 +17,14 @@ var production = gutil.env.production;
 var type = production ? 'production' : 'development';
 gutil.log('Building for ' + type);
 
-
+/**
+ * Runs default gulp tasks upon 'gulp'
+ */
 gulp.task('default', ['startDB', 'serve']);
 
+/**
+ * Runs JSHint linter on scripts
+ */
 gulp.task('lint', function(){
   return gulp
     .src(pkg.paths.src.js)
@@ -27,14 +32,24 @@ gulp.task('lint', function(){
     .pipe(plugins.jshint.reporter('default'))
 });
 
+/**
+ * Starts Node server for dev environment
+ */
 gulp.task('serve', function(){
   plugins.nodemon({
     script: 'server.js'
   });
 });
 
+/**
+ * Starts MongoDB for dev environment
+ */
 gulp.task('startDB', function(){
   return gulp
     .src('')
     .pipe(plugins.shell(['mongod']));
 });
+
+/**
+ * Bundles all 
+ */
