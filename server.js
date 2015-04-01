@@ -8,6 +8,7 @@ var session = require('express-session');
 var mongoose = require('mongoose');
 var passport = require('passport');
 var morgan = require('morgan');
+var flash = require('connect-flash');
 
 /**
  * Create Express Server
@@ -42,6 +43,7 @@ app.use(session({
 }));
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(flash());
 
 /**
  * Load routes and pass in app and configured passport
