@@ -3,3 +3,4 @@ npm-debug.log
 /config/secret.js
 /client/bower_components/
 .DS_Store
+/dist

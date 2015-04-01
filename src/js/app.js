@@ -1,8 +1,9 @@
-var Dunk = React.createClass({
+var React = require('react');
 
+var Home = React.createClass({
   render: function(){
-    return <button>DUNK</button>;
+
   }
-});
- 
-React.render(<Dunk/>, document.getElementById('app'));
+})
+
+// React.render();
