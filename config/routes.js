@@ -14,9 +14,11 @@ var router = function(app, passport){
   app.get('/signup', function(req, res){
 
   });
-  app.post('/signup', function(req, res){
-
-  });
+  app.post('/signup', passport.authenticate('local-signup', {
+    successRedirect: '/profile',
+    failureRedirect: '/signup', 
+    failureFlash: true
+  }));
   app.get('/login', function(req, res){
 
   });
