@@ -4,14 +4,13 @@
 var gulp = require('gulp');
 var path = {
   HTML: 'src/index.html',
-  JS: ['src/js/app.js', 'src/js/*/*.js'],
   OUT: 'bundle.js',  
   MINIFIED_OUT: 'bundle.min.js',
   DEST: 'dist',
   DEST_SRC: 'dist/src',
   DEST_BUILD: 'dist/build',
   DEST_CSS: 'dist/css',
-  ENTRY_POINT: './src/js/app.js'
+  ENTRY_POINT: 'src/js/app.js'
 };
 
 /**
@@ -70,15 +69,6 @@ gulp.task('watch', function(){
     .pipe(source(path.OUT))
     .pipe(gulp.dest(path.DEST_SRC));
 
-});
-/**
- * Runs JSHint linter on scripts
- */
-gulp.task('lint', function(){
-  return gulp
-    .src(path.JS)
-    .pipe(plugins.jshint())
-    .pipe(plugins.jshint.reporter('default'))
 });
 
 /**
