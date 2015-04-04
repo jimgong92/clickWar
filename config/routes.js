@@ -3,7 +3,7 @@ var router = function(app, passport){
    * Click Page
    */
   app.get('/', function(req, res){
-    res.render('Hello World');
+    // res.send(200);
   });
   app.post('/', function(req, res){
 

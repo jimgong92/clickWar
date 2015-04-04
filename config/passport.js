@@ -54,4 +54,5 @@ var configuration = function(passport){
     });
   }));
 };
+
 module.exports = configuration;

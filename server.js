@@ -4,8 +4,8 @@
 var express = require('express');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var session = require('express-session');
 var mongoose = require('mongoose');
+var session = require('express-session');
 var passport = require('passport');
 var morgan = require('morgan');
 var flash = require('connect-flash');
@@ -32,10 +32,10 @@ require('./config/passport')(passport);
 /**
  * Middleware
  */
-app.use(morgan('dev'));
 app.use(cookieParser())
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
+app.use(morgan('dev'));
 app.use(session({
   secret: "SECRET",
   resave: false,
@@ -48,7 +48,7 @@ app.use(flash());
 /**
  * Load routes and pass in app and configured passport
  */
-require('./config/routes')(app, passport);
+// require('./config/routes')(app, passport);
 
 /**
  * Express Server Configuration
@@ -56,7 +56,7 @@ require('./config/routes')(app, passport);
 app.set("port", process.env.PORT || 1337);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
-app.use(express.static(__dirname + '/src'));
+app.use(express.static(__dirname + '/dist'));
 
 app.listen(app.get("port"), function(){
   console.log("Listening on port %d", app.get("port"));
