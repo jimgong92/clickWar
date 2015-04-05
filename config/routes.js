@@ -2,39 +2,39 @@ var router = function(app, passport){
   /**
    * Click Page
    */
-  app.get('/', function(req, res){
+  app.get('/home', function(req, res){
     // res.send(200);
   });
-  app.post('/', function(req, res){
+  app.post('/home', function(req, res){
 
   });
   /**
    * Signup/Login
    */
-  app.get('/signup', function(req, res){
+  app.get('/api/signup', function(req, res){
 
   });
-  app.post('/signup', passport.authenticate('local-signup', {
+  app.post('/api/signup', passport.authenticate('local-signup', {
     successRedirect: '/profile',
     failureRedirect: '/signup', 
     failureFlash: true
   }));
-  app.get('/login', function(req, res){
+  app.get('/api/login', function(req, res){
 
   });
-  app.post('/login', function(req, res){
+  app.post('/api/login', function(req, res){
 
   });
   /**
    * Protected by auth, must be logged in
    */
-  app.get('/profile', isLoggedIn, function(req, res){
+  app.get('/api/profile', isLoggedIn, function(req, res){
 
   });
   /**
    * Logout
    */
-  app.get('/logout', function(req, res){
+  app.get('/api/logout', function(req, res){
     req.logout();
     res.redirect('/');
   });

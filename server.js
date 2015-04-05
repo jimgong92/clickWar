@@ -48,7 +48,7 @@ app.use(flash());
 /**
  * Load routes and pass in app and configured passport
  */
-// require('./config/routes')(app, passport);
+require('./config/routes')(app, passport);
 
 /**
  * Express Server Configuration

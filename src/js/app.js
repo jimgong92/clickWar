@@ -1,6 +1,6 @@
 var React = require('react');
 var Router = require('react-router');
-console.log('hey');
+
 /**
  * Components
  */ 
