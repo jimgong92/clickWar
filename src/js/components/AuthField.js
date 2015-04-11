@@ -1,10 +1,13 @@
 var React = require('react');
-var UsernameField = require('./UsernameFieldView');
-var PasswordField = require('./PasswordFieldView');
+var ReactPropTypes = React.PropTypes;
+var TextInput = require('./TextInput');
 
 var AuthField = React.createClass({
   propTypes: {
-
+    className: ReactPropTypes.string,
+    usernameId: ReactPropTypes.string,
+    passwordId: ReactPropTypes.string,
+    onSave: ReactPropTypes.func.isRequired
   },
   getInitialState: function(){
     return {
@@ -15,9 +18,19 @@ var AuthField = React.createClass({
   render: function(){
     return (
       <form>
-        <UsernameField />
+        <TextInput
+          className="usernameField"
+          id={this.props.usernameId}
+          type="text" 
+          placeholder="Username"
+          onSave={this.props.onSave} />
         <br />
-        <PasswordField />
+        <TextInput
+          className="passwordField"
+          id={this.props.passwordId}
+          type="password" 
+          placeholder="Password"
+          onSave={this.props.onSave} />
       </form>
     );
   }

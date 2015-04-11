@@ -1,4 +1,5 @@
 var React = require('react');
+var ReactPropTypes = React.PropTypes;
 
 /**
  * Allow for keyboard submit
@@ -10,6 +11,7 @@ var TextInput = React.createClass({
     className: ReactPropTypes.string,
     id: ReactPropTypes.string,
     placeholder: ReactPropTypes.string,
+    type: ReactPropTypes.string,
     onSave: ReactPropTypes.func.isRequired,
     value: ReactPropTypes.string
   },
@@ -40,6 +42,7 @@ var TextInput = React.createClass({
         className={this.props.className}
         id={this.props.id}
         placeholder={this.props.placeholder}
+        type={this.props.type}
         onChange={this._onChange}
         onKeyDown={this._onKeyDown}
         value={this.state.value}

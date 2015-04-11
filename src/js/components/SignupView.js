@@ -1,24 +1,23 @@
 var React = require('react');
-var UsernameField = require('./UsernameFieldView');
-var PasswordField = require('./PasswordFieldView');
+var AuthField = require('./AuthField');
 
 var Signup = React.createClass({
-  propTypes: {
-
-  },
   getInitialState: function(){
     return {
       username: '',
       password: ''
     };
   },
+  _onSave: function(){
+
+  },
   render: function(){
     return (
-      <form>
-        <UsernameField />
-        <br />
-        <PasswordField />
-      </form>
+      <AuthField 
+        className="signup"
+        usernameId="signup-username"
+        passwordId="signup-password"
+        onSave={this._onSave} />
     );
   }
 });
