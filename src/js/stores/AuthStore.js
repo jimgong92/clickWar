@@ -40,6 +40,6 @@ AppDispatcher.register(function(action){
     default: 
       //no op
   }
-};
+});
 
 module.exports = AuthStore;

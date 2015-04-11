@@ -22,7 +22,7 @@ var AuthField = React.createClass({
   },
   render: function(){
     return (
-      <form>
+      <form className={this.props.className}>
         <TextInput
           className="usernameField"
           id={this.props.usernameId}
