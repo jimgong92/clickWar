@@ -1,10 +1,14 @@
 var React = require('react');
-var AuthField = require('./AuthField');
 var $ = require('jquery');
+var AuthActions = require('../actions/AuthActions')
+/**
+ * Component Dependencies
+ */
+var AuthField = require('./AuthField');
 
 var Signup = React.createClass({
   _onSave: function(username, password){
-    
+    console.log('hre');
   },
   render: function(){
     return (

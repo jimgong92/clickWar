@@ -1,5 +1,7 @@
 var keyMirror = require('keymirror');
 
-module.exports = keyMirror({
+var AuthConstants = keyMirror({
 
 });
+
+module.exports = AuthConstants;

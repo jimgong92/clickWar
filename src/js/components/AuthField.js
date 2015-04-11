@@ -1,7 +1,10 @@
 var React = require('react');
 var ReactPropTypes = React.PropTypes;
-var TextInput = require('./TextInput');
 var $ = require('jquery');
+/**
+ * Component Dependencies
+ */
+var TextInput = require('./TextInput');
 
 var AuthField = React.createClass({
   propTypes: {
@@ -13,7 +16,9 @@ var AuthField = React.createClass({
   _onSave: function(){
     var username = $('#signup-username').val().trim();
     var password = $('#signup-password').val().trim();
-    this.props.onSave(username, password);
+    if (username && password) {
+      this.props.onSave(username, password);
+    }
   },
   render: function(){
     return (

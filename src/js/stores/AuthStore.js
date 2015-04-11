@@ -1,12 +1,12 @@
 var AppDispatcher = require('../dispatcher/AppDispatcher');
 var EventEmitter = require('events').EventEmitter;
-var Constants = require('../constants/Constants');
 var assign = require('object-assign');
 var $ = require('jquery');
+var AuthConstants = require('../constants/AuthConstants');
 
 var CHANGE_EVENT = 'change';
 
-var Store = assign({}, EventEmitter.prototype, {
+var AuthStore = assign({}, EventEmitter.prototype, {
   emitChange: function(){
     this.emit(CHANGE_EVENT);
   },
@@ -30,4 +30,4 @@ AppDispatcher.register(function(action){
   }
 };
 
-module.exports = Store;
+module.exports = AuthStore;
