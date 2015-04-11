@@ -8,6 +8,13 @@ var AuthActions = {
       username: username,
       password: password
     });
+  },
+  login: function(username, password){
+    AppDispatcher.dispatch({
+      actionType: AuthConstants.SIGNUP,
+      username: username,
+      password: password
+    });
   }
 };
 
