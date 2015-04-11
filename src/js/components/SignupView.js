@@ -3,18 +3,8 @@ var AuthField = require('./AuthField');
 var $ = require('jquery');
 
 var Signup = React.createClass({
-  getInitialState: function(){
-    return {
-      username: '',
-      password: ''
-    };
-  },
-  _onSave: function(){
-    console.log($('#signup-username').val());
-    this.setState({
-      username: $('#signup-username').val(),
-      password: $('#signup-password').val()
-    });
+  _onSave: function(username, password){
+    
   },
   render: function(){
     return (
