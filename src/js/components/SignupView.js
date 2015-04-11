@@ -8,7 +8,7 @@ var AuthField = require('./AuthField');
 
 var Signup = React.createClass({
   _onSave: function(username, password){
-    console.log('hre');
+    AuthActions.signup(username, password);
   },
   render: function(){
     return (

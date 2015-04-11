@@ -7,6 +7,10 @@ var AuthConstants = require('../constants/AuthConstants');
 var CHANGE_EVENT = 'change';
 
 var AuthStore = assign({}, EventEmitter.prototype, {
+  signup: function(username, password){
+    console.log(username);
+    console.log(password);
+  },
   emitChange: function(){
     this.emit(CHANGE_EVENT);
   },
@@ -25,6 +29,9 @@ var AuthStore = assign({}, EventEmitter.prototype, {
  */
 AppDispatcher.register(function(action){
   switch(action.actionType){
+    case AuthConstants.SIGNUP:
+      AuthStore.signup(action.username, action.password);
+      break;
     default: 
       //no op
   }
