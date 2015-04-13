@@ -10,6 +10,25 @@ var AuthStore = assign({}, EventEmitter.prototype, {
   signup: function(username, password){
     console.log(username);
     console.log(password);
+    console.log(window.location.origin + '/api/signup');
+    $.ajax({
+      url: window.location.origin + '/api/signup',
+      type: 'POST',
+      data: JSON.stringify({
+        username: username,
+        password: password
+      }),
+      contentType: 'application/json',
+      success: function(data){
+        console.log(data);
+        var id = data._id;
+        AuthStore.emitChange();
+      },
+      error: function(err){
+        console.error("Error");
+        console.error(err);
+      }
+    });
   },
   login: function(username, password){
     console.log(username);
