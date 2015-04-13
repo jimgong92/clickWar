@@ -16,7 +16,7 @@ var router = function(app, passport){
 
   app.post('/api/signup', passport.authenticate('local-signup', {
     successRedirect: '/profile',
-    failureRedirect: '/signup', 
+    failureRedirect: '/auth', 
     failureFlash: true
   }));
   app.post('/api/login', function(req, res){

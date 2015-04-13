@@ -14,7 +14,7 @@ var Signup = React.createClass({
     return (
       <AuthField 
         className="login"
-        usernameId="login-email"
+        emailId="login-email"
         passwordId="login-password"
         onSave={this._onSave} />
     );

@@ -28,7 +28,6 @@ var configuration = function(passport){
     passReqToCallback: true
   },
   function(req, email, password, done){
-    console.log('here');
     process.nextTick(function(){
       User.findOne({'local.email' : email}, function(err, user){
         if(err){
