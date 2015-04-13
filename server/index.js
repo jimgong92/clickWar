@@ -1,13 +1,14 @@
 /**
  * MODULE DEPENDENCIES
  */
+var mongoose = require('mongoose');
+var passport = require('passport');
+var flash = require('connect-flash');
+
+var morgan = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var mongoose = require('mongoose');
 var session = require('express-session');
-var passport = require('passport');
-var morgan = require('morgan');
-var flash = require('connect-flash');
 
 /**
  * Server configuration
@@ -30,10 +31,11 @@ var serverConfig = function(app){
   /**
    * Middleware
    */
+  app.use(morgan('dev'));
   app.use(cookieParser())
   app.use(bodyParser.urlencoded({extended: true}));
   app.use(bodyParser.json());
-  app.use(morgan('dev'));
+
   app.use(session({
     secret: "SECRET",
     resave: false,
@@ -47,12 +49,6 @@ var serverConfig = function(app){
    * Load routes and pass in app and configured passport
    */
   require('./config/routes')(app, passport);
-
-  /**
-   * Express Server Configuration
-   */
-  app.use(bodyParser.json());
-  app.use(bodyParser.urlencoded({extended: true}));
 }
 
 module.exports = serverConfig;

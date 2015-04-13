@@ -7,15 +7,15 @@ var AuthConstants = require('../constants/AuthConstants');
 var CHANGE_EVENT = 'change';
 
 var AuthStore = assign({}, EventEmitter.prototype, {
-  signup: function(username, password){
-    console.log(username);
+  signup: function(email, password){
+    console.log(email);
     console.log(password);
     console.log(window.location.origin + '/api/signup');
     $.ajax({
       url: window.location.origin + '/api/signup',
       type: 'POST',
       data: JSON.stringify({
-        username: username,
+        email: email,
         password: password
       }),
       contentType: 'application/json',
@@ -30,8 +30,8 @@ var AuthStore = assign({}, EventEmitter.prototype, {
       }
     });
   },
-  login: function(username, password){
-    console.log(username);
+  login: function(email, password){
+    console.log(email);
     console.log(password);
   },
   emitChange: function(){
@@ -51,10 +51,10 @@ var AuthStore = assign({}, EventEmitter.prototype, {
 AppDispatcher.register(function(action){
   switch(action.actionType){
     case AuthConstants.SIGNUP:
-      AuthStore.signup(action.username, action.password);
+      AuthStore.signup(action.email, action.password);
       break;
     case AuthConstants.LOGIN:
-      AuthStore.login(action.username, action.password);
+      AuthStore.login(action.email, action.password);
       break;
     default: 
       //no op

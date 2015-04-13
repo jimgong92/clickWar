@@ -9,25 +9,25 @@ var TextInput = require('./TextInput');
 var AuthField = React.createClass({
   propTypes: {
     className: ReactPropTypes.string,
-    usernameId: ReactPropTypes.string,
+    emailId: ReactPropTypes.string,
     passwordId: ReactPropTypes.string,
     onSave: ReactPropTypes.func.isRequired
   },
   _onSave: function(){
-    var username = $('#signup-username').val().trim();
+    var email = $('#signup-email').val().trim();
     var password = $('#signup-password').val().trim();
-    if (username && password) {
-      this.props.onSave(username, password);
+    if (email && password) {
+      this.props.onSave(email, password);
     }
   },
   render: function(){
     return (
       <form className={this.props.className}>
         <TextInput
-          className="usernameField"
-          id={this.props.usernameId}
+          className="emailField"
+          id={this.props.emailId}
           type="text" 
-          placeholder="Username"
+          placeholder="Email"
           onSave={this._onSave} />
         <br />
         <TextInput

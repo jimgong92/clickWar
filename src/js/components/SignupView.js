@@ -8,14 +8,14 @@ var AuthStore = require('../stores/AuthStore');
 var AuthField = require('./AuthField');
 
 var Signup = React.createClass({
-  _onSave: function(username, password){
-    AuthActions.signup(username, password);
+  _onSave: function(email, password){
+    AuthActions.signup(email, password);
   },
   render: function(){
     return (
       <AuthField 
         className="signup"
-        usernameId="signup-username"
+        usernameId="signup-email"
         passwordId="signup-password"
         onSave={this._onSave} />
     );

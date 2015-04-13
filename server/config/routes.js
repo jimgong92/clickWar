@@ -13,19 +13,12 @@ var router = function(app, passport){
 
   });
   //TODO: DO SIGNUP WITH PASSPORT
-  app.post('/api/signup', function(req, res){
-    AuthController.signup(req.body.username, req.body.password, function(err){
-      if(err) {
-        return res.sendStatus(400);
-      }
-      return res.sendStatus(201);
-    })
-  });
-  // app.post('/api/signup', passport.authenticate('local-signup', {
-  //   successRedirect: '/profile',
-  //   failureRedirect: '/signup', 
-  //   failureFlash: true
-  // }));
+
+  app.post('/api/signup', passport.authenticate('local-signup', {
+    successRedirect: '/profile',
+    failureRedirect: '/signup', 
+    failureFlash: true
+  }));
   app.post('/api/login', function(req, res){
 
   });
