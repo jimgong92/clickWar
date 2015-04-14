@@ -1,16 +1,13 @@
-var AppDispatcher = require('../dispatcher/AppDispatcher');
 var EventEmitter = require('events').EventEmitter;
 var assign = require('object-assign');
 var $ = require('jquery');
+var AppDispatcher = require('../dispatcher/AppDispatcher');
 var AuthConstants = require('../constants/AuthConstants');
 
 var CHANGE_EVENT = 'change';
 
 var AuthStore = assign({}, EventEmitter.prototype, {
   signup: function(email, password){
-    console.log(email);
-    console.log(password);
-    console.log(window.location.origin + '/api/signup');
     $.ajax({
       url: window.location.origin + '/api/signup',
       type: 'POST',
@@ -20,12 +17,13 @@ var AuthStore = assign({}, EventEmitter.prototype, {
       }),
       contentType: 'application/json',
       success: function(data){
+        console.log("Successful signup");
         console.log(data);
         var id = data._id;
-        AuthStore.emitChange();
-      },
+        this.emitChange();
+      }.bind(this),
       error: function(err){
-        console.error("Error");
+        console.error("Error in signup");
         console.error(err);
       }
     });
@@ -33,6 +31,25 @@ var AuthStore = assign({}, EventEmitter.prototype, {
   login: function(email, password){
     console.log(email);
     console.log(password);
+    $.ajax({
+      url: window.location.origin + '/api/login',
+      type: 'POST',
+      data: JSON.stringify({
+        email: email,
+        password: password
+      }),
+      contentType: 'application/json',
+      success: function(data){
+        console.log("Successful login");
+        console.log(data);
+        var id = data._id;
+        this.emitChange();
+      }.bind(this),
+      error: function(err){
+        console.error("Error in login");
+        console.error(err);
+      }
+    });
   },
   emitChange: function(){
     this.emit(CHANGE_EVENT);

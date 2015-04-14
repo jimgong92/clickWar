@@ -11,7 +11,7 @@ var AuthActions = {
   },
   login: function(email, password){
     AppDispatcher.dispatch({
-      actionType: AuthConstants.SIGNUP,
+      actionType: AuthConstants.LOGIN,
       email: email,
       password: password
     });
