@@ -10,10 +10,10 @@ var router = function(app, passport){
    * Signup/Login
    */
   app.get('/auth', function(req, res){
+    AuthController.signup();
 
   });
   //TODO: DO SIGNUP WITH PASSPORT
-
   app.post('/api/signup', passport.authenticate('local-signup', {
     successRedirect: '/profile',
     failureRedirect: '/auth', 
