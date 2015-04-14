@@ -19,9 +19,11 @@ var router = function(app, passport){
     failureRedirect: '/auth', 
     failureFlash: true
   }));
-  app.post('/api/login', function(req, res){
-
-  });
+  app.post('/api/login', passport.authenticate('local-login', {
+    successRedirect: '/profile',
+    failureRedirect: '/auth', 
+    failureFlash: true
+  }));
   /**
    * Protected by auth, must be logged in
    */
