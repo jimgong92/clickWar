@@ -3,17 +3,15 @@ var router = function(app, passport){
   /**
    * Click Page
    */
-  app.get('/home', function(req, res){
+  app.get('/home', isLoggedIn, function(req, res){
     // res.send(200);
   });
   /**
    * Signup/Login
    */
   app.get('/auth', function(req, res){
-    AuthController.signup();
-
+    AuthController.signup(); //Helper to check DB
   });
-  //TODO: DO SIGNUP WITH PASSPORT
   app.post('/api/signup', passport.authenticate('local-signup', {
     successRedirect: '/profile',
     failureRedirect: '/auth', 
@@ -46,6 +44,6 @@ function isLoggedIn(req, res, next){
   if (req.isAuthenticated()){
     return next();
   }
-  res.redirect('/');
+  res.redirect('/auth');
 }
 module.exports = router;

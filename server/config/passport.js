@@ -38,9 +38,6 @@ var configuration = function(passport){
         }
         else {
           var newUser = new User();
-          /**
-           * Set local credentials
-           */
           newUser.local.email = email;
           newUser.local.password = newUser.generateHash(password);
           newUser.save(function(err){
